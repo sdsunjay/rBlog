@@ -32,9 +32,14 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mail_form'
 gem 'simple_form'
 gem "therubyracer"
-gem 'will_paginate', '~> 3.0'
+gem "will_paginate", "~> 3.0"
+gem "paperclip", "~> 4.3"
+gem 'bootstrap-wysihtml5-rails'
+# gem "wysiwyg-rails"
+gem "font-awesome-rails"
 # Use Unicorn as the app server
 # gem 'unicorn'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

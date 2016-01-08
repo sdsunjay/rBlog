@@ -6,7 +6,13 @@ class Admin::PostsController < Admin::ApplicationController
 
   def create
     @post = Post.create(post_params)
-  
+ 
+# set image to nil if we haven't chosen an image
+   if params[:post][:image].blank?
+    @post.image = nil
+   end 
+
+# save the post
     if @post.save
         flash[:notice] = "Post Created"
         redirect_to admin_posts_path
@@ -21,10 +27,14 @@ class Admin::PostsController < Admin::ApplicationController
 
   def update
     @post = Post.find(params[:id])
-      if @post.update(post_params)
+      
+    if params[:post][:image].blank?
+      @post.image = nil
+    end 
+    if @post.update(post_params)
           flash[:notice] = "Post Updated"
           redirect_to admin_posts_path
-      else
+    else
           flash[:alert] = "Post Not Updated"
           render :action => 'edit'
       end
@@ -52,6 +62,7 @@ class Admin::PostsController < Admin::ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+
   private
   def post_params
     params.require(:post).permit(:title, :category_id, :user_id, :tags, :image, :body)

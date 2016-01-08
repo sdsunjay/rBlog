@@ -4,15 +4,14 @@ Rails.application.routes.draw do
   get 'contacts/create'
 
   get 'about' => 'about#index'
-
-  resources :comments, only: [:new]
-  # get 'comments/new'
-  
-  # get 'categories/show'
-  resources :categories, only: [:show]
-  resources :posts, only: [:index, :show]
+ 
   # get 'posts/index'
-  # get 'posts/show'
+  # get 'posts/show' 
+  
+  resources :categories, only: [:show]
+  resources :posts do
+  	resources :comments, only: [:show, :create, :index]
+  end
 
   namespace :admin do
     resources :sessions, only: [:new, :create]
@@ -62,7 +61,6 @@ Rails.application.routes.draw do
       # get 'posts/update'
       # get 'posts/destroy'
   end
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

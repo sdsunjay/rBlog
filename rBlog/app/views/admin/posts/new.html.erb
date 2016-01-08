@@ -1,4 +1,18 @@
-              <h2 class="page-header">Add New Post</h2>         
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+
+$(document).on('page:load', function(){
+  window['rangy'].initialized = false
+})
+
+</script>
+
+<h2 class="page-header">Add New Post</h2>         
     <% if @post.errors.any? %>
         <% @post.errors.full_messages.each do |msg| %>
             <div class="alert alert-danger"><%= msg %> </div>
@@ -22,8 +36,9 @@
     <div class="form-group">
         <%= f.text_area :tags, :placeholder => "tags", class:'form-control' %>
     </div>
+
     <div class="form-group">
-        <%= f.text_area :body, :placeholder => "body", class:'form-control' %>
+        <%= f.text_area :body, :id => "body-textarea", class: 'wysihtml5 form-control', :placeholder => "body" %>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     <%=link_to "Cancel", admin_posts_path, class:'btn btn-default' %>
