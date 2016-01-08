@@ -1,2 +1,4 @@
 # rBlog
-A Ruby on Rails blogging app
+A Ruby on Rails blogging app.
+
+
