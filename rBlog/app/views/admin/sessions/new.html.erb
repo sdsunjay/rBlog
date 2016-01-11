@@ -1,0 +1,16 @@
+<%= form_tag admin_sessions_path, :class => 'form-signin' do %>
+        <h2 class="form-signin-heading">rBlog</h2>
+        <!-- Alerts & Messages -->
+        <% if flash[:notice] %>
+	   <div class="alert alert-success"><%= flash[:notice] %></div>
+        <% end %>
+        <% if flash[:alert] %>
+	   <div class="alert alert-danger"><%= flash[:alert] %></div>
+        <% end %>
+        <%= text_field_tag :email, params[:email], class:'form-control', placeholder:'Email address', maxlength: 20, size: 25 %>
+        <%= text_field_tag :password, params[:password], class:'form-control', placeholder:'Password', maxlength: 20, size: 25 %>
+        <% if false %>
+	 <%= password_field_tag(:password, class: 'form-control') %>
+        <% end %>
+        <%= submit_tag "Log in", class: 'btn btn-ld btn-primary btn-block' %>
+<% end %>
