@@ -20,27 +20,27 @@ $(document).on('page:load', function(){
     <% end %>
     <%= form_for [:admin, @post] do |f| %>
         <div class="form-group">
-        <%= f.text_field :title, :placeholder => "Title", class:'form-control' %>
-    </div>
-    <div class="form-group">
-        <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select Category'}, class:'form-control' %>
-    </div>
+            <%= f.text_field :title, :placeholder => "Title", class:'form-control' %>
+          </div>
+        <div class="form-group">
+          <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select Category'}, class:'form-control' %>
+        </div>
 
-    <div class="form-group">
-        <%= f.select :user_id, User.all.collect {|x| [x.first_name + ' ' + x.last_name, x.id]}, {:include_blank => 'Select User'}, class:'form-control' %>
-    </div>
-    <div class="form-group">
-        <%= f.label :image %>
-        <%= f.file_field :image %>
-    </div>
-    <div class="form-group">
-        <%= f.text_area :tags, :placeholder => "tags", class:'form-control' %>
-    </div>
+        <div class="form-group">
+          <%= f.select :user_id, User.all.collect {|x| [x.first_name + ' ' + x.last_name, x.id]}, {:include_blank => 'Select User'}, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :tags, :placeholder => "tags", class:'form-control' %>
+        </div>
 
-    <div class="form-group">
-        <%= f.text_area :body, :id => "body-textarea", class: 'wysihtml5 form-control', :placeholder => "body" %>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <%=link_to "Cancel", admin_posts_path, class:'btn btn-default' %>
-</form>
+        <div class="form-group">
+          <%= f.text_area :body, :id => "body-textarea", class: 'wysihtml5 form-control', :placeholder => "body" %>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <%=link_to "Cancel", admin_posts_path, class:'btn btn-default' %>
+    </form>
 <% end %>
